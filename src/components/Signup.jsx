@@ -32,97 +32,85 @@ const Signup = () => {
         }
     }
     return (
-        <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[600px]">
-          <div className="flex items-center justify-center ">
-            <div className="mx-auto grid w-[550px] gap-6 py-10 px-16 border border-black/10 rounded-xl shadow-zinc-900 shadow-lg">
-              <div className="grid gap-2 text-center">
-                <h1 className="text-3xl font-bold">Sign Up to create your account</h1>
-                <p className="text-balance text-muted-foreground">
-                  Enter your email below to create your account
+      <div className="w-full min-h-[600px] lg:flex lg:min-h-screen pt-4">
+        <div className="flex items-center justify-center w-full lg:w-1/2">
+          <div className="mx-auto flex w-full max-w-md h-auto gap-6 py-10 px-8 border border-black/10 rounded-xl shadow-zinc-900 shadow-lg">
+            <div className="w-full">
+              <div className="text-center mb-8">
+                <h1 className="text-3xl font-bold">Sign up to create your account</h1>
+                <p className="text-muted-foreground mt-2">
+                  Enter your details below to Create your account
                 </p>
-                {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
+                {error && <p className='text-red-600 mt-4'>{error}</p>}
               </div>
-              <form onSubmit={handleSubmit(signup)} className='mt-8'>
-                <div className="grid gap-4">
-                <div className="grid gap-2">
-                    <div className="flex items-center">
-                    <Label htmlFor="full name">Full Name</Label>
-                    </div> 
-                    <Input
+              <form onSubmit={handleSubmit(login)}>
+                <div className="flex flex-col gap-4">
+                  <div>
+                  <Label htmlFor="full name">Full Name</Label>
+                  <Input
                         placeholder="Enter your full name"
                         {...register("name", {
                             required: true,
                         })}
-                        />
-                    </div>
-                    <div className="grid gap-2">
-                    <div className="flex items-center">
+                   />
+                  </div>
+                  <div>
                     <Label htmlFor="email">Email</Label>
-                    </div> 
                     <Input
-                        type = 'email'
-                        placeholder = 'Enter your email'
-                        {...register('email', {
-                            required: true,
-                            validate: {
-                                matchPattern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-                                .test(value) ||
-                                "Email address must be a valid address",
-                            }
-                        })}
+                      type='email'
+                      placeholder='Enter your email'
+                      {...register('email', {
+                        required: true,
+                        validate: {
+                          matchPattern: (value) =>
+                            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                            "Email address must be a valid address",
+                        },
+                      })}
                     />
-                    </div>
-                    <div className="grid gap-2">
-                    <div className="flex items-center">
-                        <Label htmlFor="password">Password</Label>
-                    </div>
-                        <Input
-                            type = 'password'
-                            placeholder = 'Enter your password'
-                            {...register('password', {
-                                required: true,
-                                minLength: 6
-                            })}
-                        />
-                    </div>
-                    <Button
-                    type = 'submit'
-                    className='w-full'
-                    >
+                  </div>
+                  <div>
+                    <Label htmlFor="password">Password</Label>
+                    <Input
+                      type='password'
+                      placeholder='Enter your password'
+                      {...register('password', {
+                        required: true,
+                        minLength: 6,
+                      })}
+                    />
+                  </div>
+                  <Button type='submit' className='w-full'>
                     Sign Up
-                    </Button>
-                    <Button 
-                    variant="outline" 
-                    className="w-full">
+                  </Button>
+                  <Button variant="outline" className="w-full">
                     Sign Up with Google
-                    </Button>
+                  </Button>
                 </div>
               </form>
-              
-              <div className="mt-4 text-center text-sm">
-                <p className="mt-2 text-center text-base text-black/60">
-                        Already have an account?&nbsp;
-                        <Link
-                            to="/login"
-                            className="font-medium text-primary transition-all duration-200 hover:underline"
-                        >
-                            Sign In
-                        </Link>
+              <div className="mt-8 text-center">
+                <p className="text-base text-black/60">
+                  Already have an account?&nbsp;
+                  <Link
+                    to="/login"
+                    className="font-medium text-primary transition-all duration-200 hover:underline"
+                  >
+                    Sign In
+                  </Link>
                 </p>
               </div>
             </div>
           </div>
-          <div className="hidden bg-muted lg:block">
-            <img
-              src={loginImg}
-              alt="Image"
-              width="1920"
-              height="1080"
-              className="w-full  h-full object-cover dark:brightness-[0.2] dark:grayscale"
-            />
-          </div>
         </div>
-      )
+        <div className="hidden lg:flex lg:w-1/2 bg-muted">
+          <img
+            src={loginImg}
+            alt="Login Illustration"
+            className="w-full h-full object-cover dark:brightness-[0.2] dark:grayscale"
+          />
+        </div>
+      </div>
+    );
   }
 
 export default Signup

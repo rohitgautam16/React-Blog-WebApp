@@ -18,36 +18,32 @@ const Home = () => {
 const navigate = useNavigate();    
 
     if (posts.length === 0){
-        return (
-            <div className="min-h-screen flex flex-col bg-white">
-              <main className="flex-grow flex items-center justify-center px-4 py-12">
-                <div className="max-w-7xl w-full flex items-center">
-                  <div className="w-1/2 pr-8">
-                    <h1 className="text-6xl font-bold mb-6">Human stories & ideas</h1>
-                    <p className="text-xl text-gray-600 mb-8">A place to read, write, and deepen your understanding</p>
-                    <Button 
-                     size="lg"
-                     onClick={() => navigate('/login')}
-                    >Start reading</Button>
-                  </div>
-                  <div className="w-1/2">
-                    <img src={homeImg} alt="Decorative image" className="w-full h-auto object-cover" />
-                  </div>
+      return (
+        <div className="min-h-screen flex flex-col bg-white">
+          <main className="flex-grow flex items-center justify-center px-4 py-12">
+            <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center">
+              {/* Text Section */}
+              <div className="lg:w-1/2 w-full pr-8 pl-8 mb-8 lg:mb-0">
+                <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-center lg:text-left">Human stories & ideas</h1>
+                <p className="text-lg lg:text-xl text-gray-600 mb-8 text-center lg:text-left">A place to read, write, and deepen your understanding</p>
+                <div className="flex justify-center lg:justify-start">
+                  <Button 
+                    size="lg"
+                    onClick={() => navigate('/login')}
+                  >
+                    Start reading
+                  </Button>
                 </div>
-              </main>
-              {/* <footer className="py-4 px-6 text-center text-sm text-gray-500">
-                <div className="flex justify-center space-x-4">
-                  <a href="#" className="hover:text-gray-900">Help</a>
-                  <a href="#" className="hover:text-gray-900">Status</a>
-                  <a href="#" className="hover:text-gray-900">About</a>
-                  <a href="#" className="hover:text-gray-900">Careers</a>
-                  <a href="#" className="hover:text-gray-900">Blog</a>
-                  <a href="#" className="hover:text-gray-900">Privacy</a>
-                  <a href="#" className="hover:text-gray-900">Terms</a>
-                </div>
-              </footer> */}
+              </div>
+              {/* Image Section */}
+              <div className="lg:w-1/2 w-full">
+                <img src={homeImg} alt="Decorative image" className="w-full h-auto object-cover" />
+              </div>
             </div>
-          );
+          </main>
+        </div>
+      );
+      
     }
 
     return (
