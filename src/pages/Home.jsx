@@ -19,7 +19,7 @@ const navigate = useNavigate();
 
     if (posts.length === 0){
       return (
-        <div className="min-h-screen flex flex-col bg-white">
+        <div className="min-h-screen flex flex-col bg-cream">
           <main className="flex-grow flex items-center justify-center px-4 py-12">
             <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center">
               {/* Text Section */}

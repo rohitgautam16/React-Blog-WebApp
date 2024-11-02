@@ -5,7 +5,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP, FaGithub } from "rea
 
 const Footer = () => {
     return (
-        <footer className="bg-white py-8 border-t-2 border-gray-300">
+        <footer className="bg-cream py-8 border-t-2 border-gray-300">
           <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             {/* Navigation Links */}
             <div className="mb-6 flex flex-wrap justify-center space-x-6 lg:space-x-8 text-base font-medium">

@@ -7,7 +7,7 @@ import { Input } from './index'
 import { useForm } from 'react-hook-form'
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
-import loginImg from '../assets/login-img.jpg'
+import loginImg from '../assets/login-img.png'
 
 
 const Signup = () => {
@@ -43,7 +43,7 @@ const Signup = () => {
                 </p>
                 {error && <p className='text-red-600 mt-4'>{error}</p>}
               </div>
-              <form onSubmit={handleSubmit(login)}>
+              <form onSubmit={handleSubmit(signup)}>
                 <div className="flex flex-col gap-4">
                   <div>
                   <Label htmlFor="full name">Full Name</Label>
@@ -102,7 +102,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
-        <div className="hidden lg:flex lg:w-1/2 bg-muted">
+        <div className="hidden lg:flex lg:w-1/2 ">
           <img
             src={loginImg}
             alt="Login Illustration"

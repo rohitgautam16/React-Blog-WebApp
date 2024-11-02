@@ -45,7 +45,7 @@ const Header = () => {
 
   const MobileMenu = () => {
     return (
-      <div className="lg:hidden block absolute top-16 w-full left-0 right-0 bg-white bg-opacity-90 transition">
+      <div className="lg:hidden block absolute top-16 w-full left-0 right-0 bg-cream bg-opacity-90 transition">
         <ul className="text-center text-xl p-20">
           {navItems.map((item) =>
             item.active ? (
@@ -86,7 +86,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-center bg-white border-b border-gray-300 relative">
+    <header className="flex items-center bg-cream border-b border-gray-300 relative">
       <Container>
         <nav className="flex items-center justify-between py-4 px-6">
           {/* Logo Section */}
