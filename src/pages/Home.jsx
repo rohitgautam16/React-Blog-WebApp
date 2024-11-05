@@ -47,7 +47,7 @@ const navigate = useNavigate();
     }
 
     return (
-        <div className='w-full py-8'>
+        <div className='w-full py-8 bg-cream'>
             <Container>
                 <div className='flex flex-wrap'>
                     {posts.map((post) => (

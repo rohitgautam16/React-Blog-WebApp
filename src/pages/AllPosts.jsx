@@ -12,7 +12,7 @@ const AllPost = () => {
     })
 
   return (
-    <div className='w-full py-8'>
+    <div className='w-full py-8 bg-cream min-h-[600px] lg:flex lg:min-h-screen'>
         <Container>
             <div className='flex flex-wrap'>
                 {post.map((post) => (

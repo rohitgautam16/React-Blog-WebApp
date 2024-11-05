@@ -20,7 +20,7 @@ const EditPost = () => {
         }
     },[slug, navigate])
   return post ? (
-    <div className='py-8'>
+    <div className='py-8 bg-cream'>
         <Container>
             <PostForm post={post}/>
         </Container>

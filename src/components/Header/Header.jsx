@@ -13,8 +13,6 @@ const Header = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  console.log('Auth Status:', authStatus);
-
   const navItems = [
     {
       name: 'Home',
@@ -64,16 +62,17 @@ const Header = () => {
             ) : null
           )}
           {/* Sign In Button */}
-          <Button
-            onClick={() => {
-              navigate('/login');
-              setMenuOpen(false); // Close menu after login
-              active: !authStatus
-            }}
-            className="w-full"
-          >
-            Sign In <span className="ml-2 text-lg">{<PiSignInBold />}</span>
-          </Button>
+          {!authStatus && (
+            <Button
+              onClick={() => {
+                navigate('/login');
+                setMenuOpen(false); 
+              }}
+              className="w-full"
+            >
+              Sign In <span className="ml-2 text-lg">{<PiSignInBold />}</span>
+            </Button>
+          )}
           {/* Logout Button */}
           {authStatus && (
             <li className="mt-4">
@@ -125,9 +124,11 @@ const Header = () => {
               ) : null
             )}
             {/* Sign In Button */}
-            <Button onClick={() => navigate('/login')} className="lg:ml-4">
-              Sign In <span className="ml-2 text-lg">{<PiSignInBold />}</span>
-            </Button>
+            {!authStatus && (
+              <Button onClick={() => navigate('/login')} className="lg:ml-4">
+                Sign In <span className="ml-2 text-lg">{<PiSignInBold />}</span>
+              </Button>
+            )}
             {/* Logout Button */}
             {authStatus && (
               <li>
