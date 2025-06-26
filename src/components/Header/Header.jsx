@@ -22,11 +22,11 @@ const Header = () => {
     {
       name: 'Articles',
       slug: '/all-posts',
-      active: !authStatus,
+      active: true,
     },
     {
       name: 'My Posts',
-      slug: '/all-posts',
+      slug: '/my-posts',
       active: authStatus,
     },
     {

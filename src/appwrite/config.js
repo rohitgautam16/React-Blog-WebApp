@@ -1,5 +1,6 @@
 import conf from "../conf/conf";
 import { Client, ID , Databases , Storage , Query} from "appwrite";
+import { Permission, Role } from 'appwrite';
 
 export class Service{
     client = new Client();
@@ -13,43 +14,63 @@ export class Service{
         this.databases = new Databases(this.client)
         this.bucket = new Storage(this.client)   
     }
-    async createPost({title, slug , content , featuredImage , status , userId}){
+    async createPost({ title, slug, content, featuredImage, status, userId }) {
         try {
             return await this.databases.createDocument(
-                conf.appwriteDatabaseId,
-                conf.appwriteCollectionId,
-                slug,
+                conf.appwriteDatabaseId, // Database ID
+                conf.appwriteCollectionId, // Collection ID
+                slug, // Document ID (optional, or use ID.unique() for auto-generated IDs)
                 {
                     title,
                     content,
                     featuredImage,
                     status,
-                    userId
-                }
-            )
+                    userId,
+                },
+                [
+                    Permission.read(Role.any()), // Public read access for all users
+                ],
+                [
+                    Permission.write(Role.user(userId)), // Only the creator can update or delete
+                    Permission.update(Role.user(userId)),
+                    Permission.delete(Role.user(userId))
+                ]
+            );
         } catch (error) {
             console.log("Appwrite Service :: Create Post :: error", error);
-            
+            throw error;
         }
     }
 
-    async updatePost(slug, {title , content , featuredImage , status }){
+
+    async updatePost(slug, { title, content, featuredImage, status }, userId) {
         try {
-            return await  this.databases.updateDocument(
-                conf.appwriteDatabaseId,
-                conf.appwriteCollectionId,
-                slug,
+            return await this.databases.updateDocument(
+                conf.appwriteDatabaseId, // Database ID
+                conf.appwriteCollectionId, // Collection ID
+                slug, // Document ID
                 {
                     title,
                     content,
                     featuredImage,
-                    status
-                }
-            )
+                    status,
+                },
+                [
+                    Permission.read(Role.any()) // Public read access
+                ],
+                [
+                    Permission.write(Role.user(userId)), // Only the creator can update or delete
+                    Permission.update(Role.user(userId)),
+                    Permission.delete(Role.user(userId))
+                ]
+            );
         } catch (error) {
             console.log("Appwrite Service :: Update Post :: error", error);
+            throw error;
         }
     }
+    
+ 
 
     async deletePost(slug){
         try {
